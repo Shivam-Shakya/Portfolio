@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react'
 import '../styles/Hero.css'
+import myImage from '../assets/ShivamHero.png';
 
 function BlockReveal({ children, delay = 0, blockColor = "var(--red)", display = "inline-block" }) {
   return (
@@ -64,7 +65,7 @@ export default function Hero() {
           </div>
           
           <motion.div className="hero-visual" initial={{ opacity: 0, scale: .90 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, delay: 1.8, type: "spring" }}>
-            <div className="hero-bg-image" style={{ backgroundImage: "url('/src/assets/ShivamHero.png')" }} />
+            <img src={myImage} alt="Shivam Shakya" className='hero-bg-image' style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             <div className="visual-glow" />
           </motion.div>
 
