@@ -64,7 +64,7 @@ export default function Hero() {
           </div>
           
           <motion.div className="hero-visual" initial={{ opacity: 0, scale: .90 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, delay: 1.8, type: "spring" }}>
-            <div className="hero-bg-image" style={{ backgroundImage: "url('/src/assets/Shivam.png')" }} />
+            <div className="hero-bg-image" style={{ backgroundImage: "url('/src/assets/ShivamHero.png')" }} />
             <div className="visual-glow" />
           </motion.div>
 
