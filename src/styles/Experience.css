@@ -1,0 +1,134 @@
+.section-block {
+  padding-top: 110px;
+  padding-bottom: 80px;
+}
+
+.experience-container {
+  width: min(1160px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+.experience-header-row {
+  margin-bottom: 50px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #222;
+}
+
+.eyebrow {
+  font: 11px var(--mono);
+  letter-spacing: 1.5px;
+  color: var(--red);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-size: clamp(38px, 4.8vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  font-weight: 800;
+  color: #f3f3f3;
+  margin: 0;
+}
+
+.italic-serif {
+  font-family: serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #ff3b4e;
+}
+
+.heading-note {
+  font-size: 13px;
+  color: #8c8c8c;
+  line-height: 1.8;
+  max-width: 420px;
+  margin: 0;
+}
+
+.mt-15 {
+  margin-top: 16px;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  padding: 35px 0;
+  border-bottom: 1px solid #222;
+  transition: padding-left 0.3s ease;
+}
+
+.experience-item:hover {
+  padding-left: 10px;
+}
+
+.exp-period {
+  font: 11px var(--mono);
+  color: var(--red);
+  letter-spacing: 0.8px;
+  display: block;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.exp-company {
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 700;
+  color: #f3f3f3;
+  margin: 0;
+  letter-spacing: -0.8px;
+}
+
+.exp-role {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ddd;
+  margin: 0 0 10px;
+}
+
+.exp-desc {
+  font-size: 13px;
+  color: #8c8c8c;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 650px;
+}
+
+@media(max-width: 900px) {
+  .section-block {
+    padding-top: 75px;
+    padding-bottom: 55px;
+  }
+  .experience-header-row {
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+  }
+  .experience-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 0;
+  }
+}
+
+@media(max-width: 640px) {
+  .section-block {
+    padding-top: 60px;
+    padding-bottom: 45px;
+  }
+  .experience-container {
+    width: min(100%, calc(100% - 32px));
+  }
+  .section-title {
+    font-size: clamp(30px, 7vw, 40px);
+  }
+  .experience-item {
+    padding: 20px 0;
+  }
+}

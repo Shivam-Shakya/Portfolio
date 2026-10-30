@@ -1,0 +1,134 @@
+.header-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg);
+  z-index: 100;
+  border-bottom: 1px solid #1d1d1d;
+}
+
+.topbar {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1320px, calc(100% - 64px));
+  margin: auto;
+  position: relative;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #454545;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -2px;
+}
+
+.brand-mark span {
+  color: var(--red);
+}
+
+.brand-name {
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-name span {
+  font-size: 9px;
+  color: #8c8c8c;
+  letter-spacing: 3px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links>a {
+  font-size: 12px;
+  color: #b7b7b7;
+  transition: color .2s;
+}
+
+.nav-links>a:hover {
+  color: #fff;
+}
+
+.nav-links .nav-contact {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #fff;
+  border: 1px solid #363636;
+  padding: 9px 14px;
+}
+
+.nav-contact svg {
+  color: var(--red);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  color: white;
+}
+
+@media(max-width:900px) {
+  .topbar {
+    width: calc(100% - 44px);
+    height: 70px;
+  }
+}
+
+@media(max-width:640px) {
+  .topbar {
+    width: calc(100% - 32px);
+    height: 64px;
+  }
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 63px;
+    left: -16px;
+    right: -16px;
+    padding: 16px 20px 20px;
+    background: #0d0d0d;
+    border-bottom: 1px solid #292929;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .nav-open {
+    display: flex;
+  }
+  .nav-links>a {
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+  }
+  .nav-links .nav-contact {
+    justify-content: center;
+    margin-top: 10px;
+    padding: 11px;
+  }
+}
