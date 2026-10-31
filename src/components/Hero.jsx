@@ -29,9 +29,9 @@ export default function Hero() {
   const heroScale = useTransform(scrollY, [0, 600], [1, 0.92])
 
   return (
-    <div className="hero-spacer">
+    <div className="hero-spacer" id="home">
       <motion.div className="hero-fixed" style={{ opacity: heroOpacity, scale: heroScale }}>
-        <section className="hero section-wrap" id="home">
+        <section className="hero section-wrap">
           <div className="hero-copy">
             <motion.div className="availability" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ type: "spring", delay: 1.1, stiffness: 100 }}>
               <span className="status-dot" /> OPEN TO OPPORTUNITIES

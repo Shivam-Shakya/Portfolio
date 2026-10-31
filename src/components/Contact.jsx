@@ -17,13 +17,54 @@ function Reveal({ children, className = '', delay = 0 }) {
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
-  const handleContact = (event) => {
+  const [loading, setLoading] = useState(false)
+
+  const handleContact = async (event) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    const subject = encodeURIComponent(`Portfolio enquiry from ${data.get('name')}`)
-    const body = encodeURIComponent(`${data.get('message')}\n\nFrom: ${data.get('name')}\nEmail: ${data.get('email')}`)
-    window.location.href = `mailto:shivamshakya4270@gmail.com?subject=${subject}&body=${body}`
-    setSent(true)
+    setLoading(true)
+
+    const formElement = event.currentTarget;
+    const formData = new FormData(formElement)
+    formData.append("access_key", "e42de6f6-7784-4fe3-8b27-f69f765ce3a1"); 
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      let data = {};
+      try {
+        data = await response.json();
+      } catch (jsonErr) {
+        data = { success: true };
+      }
+
+      if (response.ok || data.success) {
+        setSent(true)
+        setLoading(false)
+        formElement.reset() 
+
+        setTimeout(() => {
+          try {
+            const homeElement = document.getElementById('home') || document.querySelector('.hero') || document.querySelector('section');
+            if (homeElement) {
+              homeElement.scrollIntoView({ behavior: 'smooth' });
+            }
+          } catch (err) {
+            console.log("Scroll error:", err);
+          }
+        }, 100);
+
+      } else {
+        setLoading(false)
+        alert(data.message || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setLoading(false)
+      alert("Network error. Please try again.")
+    }
   }
 
   return (
@@ -44,8 +85,12 @@ export default function Contact() {
             <label>Your name<input name="name" type="text" placeholder="What should I call you?" required /></label>
             <label>Your email<input name="email" type="email" placeholder="you@example.com" required /></label>
             <label>What's on your mind?<textarea name="message" rows="4" placeholder="Tell me a little about it..." required /></label>
-            <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="button button-primary form-submit" type="submit">Send Message <ArrowUpRight size={16} /></motion.button>
-            {sent && <p className="form-feedback"><CheckCircle2 size={15} /> Your email app should open with the message ready to send.</p>}
+            
+            <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="button button-primary form-submit" type="submit" disabled={loading}>
+              {loading ? "Sending..." : <>Send Message <ArrowUpRight size={16} /></>}
+            </motion.button>
+            
+            {sent && <p className="form-feedback"><CheckCircle2 size={15} /> Message sent successfully! Redirecting...</p>}
           </form>
         </Reveal>
       </div>
